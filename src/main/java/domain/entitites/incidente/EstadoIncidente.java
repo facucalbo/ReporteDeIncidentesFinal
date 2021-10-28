@@ -9,6 +9,7 @@ public class EstadoIncidente {
     private PosibleEstadoIncidente posibleEstadoIncidente;
     private LocalDateTime fechaHora;
 
+    //puto
     public EstadoIncidente(LocalDateTime fechaHora, PosibleEstadoIncidente estado){
         this.fechaHora = fechaHora;
         this.posibleEstadoIncidente = estado;
