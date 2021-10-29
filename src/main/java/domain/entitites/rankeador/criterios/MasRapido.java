@@ -4,7 +4,7 @@ import domain.entitites.persons.Tecnico;
 
 import java.util.List;
 
-public class MasRapido {
+public class MasRapido implements CriterioRankeadorTecnico{
 
     public Tecnico obtenerTecnico(List<Tecnico> tecnicos){
 

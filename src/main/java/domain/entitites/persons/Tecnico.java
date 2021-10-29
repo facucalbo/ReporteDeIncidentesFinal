@@ -8,8 +8,10 @@ import domain.entitites.rankeador.criterios.MayorCantIncidentesEspecialidadDias;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
 @Setter
@@ -47,6 +49,18 @@ public class Tecnico {
 
     public void agregarIncidenteQueParticipa(Incidente incidente){
         this.incidentesQueParticipo.add(incidente);
+    }
+
+    public Integer incidentesResueltosEnNDias(Integer numeroDias){
+        return this.incidentesQueParticipo.stream()
+                .filter(i -> i.getFechaHoraCierre().isAfter(LocalDateTime.now().minusDays(numeroDias)))
+                .collect(Collectors.toList()).size();
+    }
+
+    public Integer incidentesResueltosEnNDiasPorEspecialidad(Integer numeroDias, Especialidad especialidad){
+        return this.incidentesQueParticipo.stream()
+                .filter(i -> i.getFechaHoraCierre().isAfter(LocalDateTime.now().minusDays(numeroDias)))
+                .collect(Collectors.toList()).size();
     }
 
     //el tecnico podria finalizar el incidente, el el incidente se finaliza desde la instancia de incidente.
